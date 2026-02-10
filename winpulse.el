@@ -67,7 +67,9 @@
 (defun winpulse--on-window-selection-change (_frame)
   "Flash the newly selected window when focus change."
   (let ((win (selected-window)))
-    (unless (eq win winpulse--last-selected-window)
+    (when (and (not (eq win winpulse--last-selected-window))
+               ;; No need to flash when there's only one window.
+               (> (length (window-list)) 1))
       (setq winpulse--last-selected-window win)
       (winpulse-window win))))
 
