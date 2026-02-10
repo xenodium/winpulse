@@ -2,7 +2,7 @@
 
 * winpulse
 
-=winpulse-mode= is a global minor mode that briefly flashes a window whenever it gains focus, giving you a clear visual cue for the active window.
+=winpulse-mode= momentarily flashes the background of Emacs windows whenever they gain focus, providing a visual cue for the active window.
 
 #+HTML: <img src="https://raw.githubusercontent.com/xenodium/winpulse/refs/heads/main/demo.webp">
 
