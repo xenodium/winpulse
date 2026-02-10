@@ -1,0 +1,15 @@
+👉 [[https://github.com/sponsors/xenodium][Support this work via GitHub Sponsors]]
+
+* winpulse
+
+=winpulse-mode= is a global minor mode that briefly flashes a window whenever it gains focus, giving you a clear visual cue for the active window.
+
+* Install / Setup
+
+#+begin_src emacs-lisp :lexical no
+  (use-package winpulse
+    :vc (:url "https://github.com/xenodium/winpulse"
+         :rev :newest)
+    :config
+    (winpulse-mode +1))
+#+end_src
