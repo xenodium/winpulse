@@ -45,7 +45,7 @@
   :type 'number
   :group 'winpulse)
 
-(defcustom winpulse-intensity 40
+(defcustom winpulse-brightness 40
   "How much to shift the color (0-255 range) at peak flash."
   :type 'integer
   :group 'winpulse)
@@ -98,7 +98,7 @@ the same buffer."
          (face-remap-add-relative
           'default
           (winpulse--make-face :rgb background
-                               :shift (round (* winpulse-intensity (nth 0 steps))))))
+                               :shift (round (* winpulse-brightness (nth 0 steps))))))
         (setq timer
               (run-at-time winpulse-step-interval winpulse-step-interval
                            (lambda ()
@@ -116,7 +116,7 @@ the same buffer."
                                     (face-remap-add-relative
                                      'default
                                      (winpulse--make-face :rgb background
-                                                          :shift (round (* winpulse-intensity (nth step-index steps))))))))))))))
+                                                          :shift (round (* winpulse-brightness (nth step-index steps))))))))))))))
       (set-window-parameter window 'winpulse--timer timer))))
 
 (cl-defun winpulse--shift-rgb (&key rgb shift)
