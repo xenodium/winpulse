@@ -46,12 +46,17 @@ This avoids re-flashing the original window when exiting the minibuffer."
   :type 'boolean
   :group 'winpulse)
 
-(defcustom winpulse-step-interval 0.04
+(defcustom winpulse-step-interval 0.05
   "Seconds between animation frames."
   :type 'number
   :group 'winpulse)
 
-(defcustom winpulse-brightness 40
+(defcustom winpulse-duration 0.32
+  "Total animation duration in seconds."
+  :type 'number
+  :group 'winpulse)
+
+(defcustom winpulse-brightness 15
   "How much to shift the color (0-255 range) at peak flash."
   :type 'integer
   :group 'winpulse)
@@ -91,7 +96,10 @@ the same buffer."
          (background `((:r . ,(nth 0 (color-values (face-background 'default nil t))))
                        (:g . ,(nth 1 (color-values (face-background 'default nil t))))
                        (:b . ,(nth 2 (color-values (face-background 'default nil t))))))
-         (steps '(1.0 0.85 0.7 0.5 0.35 0.2 0.1 0.0))
+         (n (max 2 (round (/ winpulse-duration winpulse-step-interval))))
+         (steps (mapcar (lambda (i)
+                          (expt (- 1.0 (/ (float i) (1- n))) 2))
+                        (number-sequence 0 (1- n))))
          (step-index 0)
          (timer nil))
     (when (and (window-live-p window)
