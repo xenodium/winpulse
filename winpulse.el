@@ -29,6 +29,8 @@
 
 ;;; Code:
 
+(eval-when-compile
+  (require 'cl-lib))
 (require 'map)
 
 (defgroup winpulse nil
