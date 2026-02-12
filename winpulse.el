@@ -65,6 +65,7 @@
 (defvar winpulse--last-selected-window nil
   "The previously selected window, used to detect actual changes.")
 
+;;;###autoload
 (define-minor-mode winpulse-mode
   "Flash the focused window background whenever window focus changes."
   :global t
