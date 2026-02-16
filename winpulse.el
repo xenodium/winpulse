@@ -37,12 +37,12 @@
   "Momentary window background flash animation."
   :group 'convenience)
 
-(defcustom winpulse-brightness 15
+(defcustom winpulse-brightness 20
   "How much to shift the color (0-255 range) at peak flash."
   :type 'integer
   :group 'winpulse)
 
-(defcustom winpulse-duration 0.32
+(defcustom winpulse-duration 0.62
   "Total animation duration in seconds."
   :type 'number
   :group 'winpulse)
