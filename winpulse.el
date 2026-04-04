@@ -124,6 +124,9 @@ the same buffer."
                              (cond
                               ((not (window-live-p window))
                                (cancel-timer timer))
+                              ((not (buffer-live-p buffer))
+                               (winpulse--cleanup-window window)
+                               (cancel-timer timer))
                               (t
                                (setq step-index (1+ step-index))
                                (if (>= step-index (length steps))
